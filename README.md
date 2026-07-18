@@ -82,32 +82,6 @@ cochlear_physics_sim/
 └── README.md
 ```
 
-### Pipeline flow
-
-```
-sidebar sliders
-      │
-      ▼
-AcousticWave            (ci_engine/acoustics.py)
-  .add_sine_wave(...) → .get_signal() → S(t)
-      │
-      ▼
-NeuroprostheticFilterbank  (ci_engine/processor.py)
-  .extract_electrode_charges(S(t)) → charges q[0..N-1]
-      │
-      ▼
-CochlearFluidModel        (ci_engine/biophysics.py)
-  .calculate_scalar_potential(q) → V(x, y)
-  .calculate_electric_field()    → (Ex, Ey)
-      │
-      ▼
-FieldPlotter               (app/visualizations.py)
-  .plot_scalar_contour(...) / .plot_vector_quiver(...) → matplotlib Figure
-      │
-      ▼
-st.pyplot(fig)
-```
-
 ## Installation
 
 ```bash
